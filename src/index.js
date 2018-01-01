@@ -59,6 +59,21 @@ function todoReducer(state = initialTodoState, action) {
   }
 }
 
+const notificationReducer = (state = {}, action) => {
+  switch (action.type) {
+    case TODO_ADD: {
+      return applySetNotifyAboutAddTodo(state, action);
+    }
+    default:
+      return state;
+  }
+};
+
+const applySetNotifyAboutAddTodo = (state, action) => {
+  const { name, id } = action.todo;
+  return { ...state, [id]: 'Todo Created: ' + name };
+};
+
 function applyAddTodo(state, action) {
   const todo = { ...action.todo, completed: false };
   const entities = { ...state.entities, [todo.id]: todo };
@@ -116,9 +131,18 @@ export const getTodo = (state, todoId) => {
   return state.todoState.entities[todoId];
 };
 
+export const getNotifications = state => {
+  return getArrayOfObject(state.notificationState);
+};
+
+const getArrayOfObject = object => {
+  return Object.keys(object).map(key => object[key]);
+};
+
 const rootReducer = combineReducers({
   todoState: todoReducer,
-  filterState: filterReducer
+  filterState: filterReducer,
+  notificationState: notificationReducer
 });
 
 const store = createStore(rootReducer, undefined, applyMiddleware(logger));
