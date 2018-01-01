@@ -13,6 +13,11 @@ const TODO_ADD = 'TODO_ADD';
 const TODO_FILTER = 'TODO_FILTER';
 const TODO_TOGGLE = 'TODO_TOGGLE';
 const FILTER_SET = 'FILTER_SET';
+const VISIBILITY_FILTERS = {
+  SHOW_COMPLETED: item => item.completed,
+  SHOW_INCOMPLETED: item => !item.completed,
+  SHOW_ALL: item => true
+};
 
 // INITIAL STATE
 
@@ -101,7 +106,10 @@ export const doSetFilter = filter => ({
 });
 
 export const getTodosAsIds = state => {
-  return state.todoState.ids;
+  return state.todoState.ids
+    .map(id => state.todoState.entities[id])
+    .filter(VISIBILITY_FILTERS[state.filterState])
+    .map(todo => todo.id);
 };
 
 export const getTodo = (state, todoId) => {
