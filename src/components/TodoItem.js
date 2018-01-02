@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { doToggleTodo } from './index';
-import { getTodo } from './index';
+import { doToggleTodo } from '../actions';
+import { getTodo } from '../reducers/reducers';
 
 const TodoItem = ({ todo, onToggleTodo }) => {
   const { name, id, completed } = todo;

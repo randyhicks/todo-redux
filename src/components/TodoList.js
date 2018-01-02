@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import { connect } from 'react-redux';
-import { getTodosAsIds } from './index';
+import { getTodosAsIds } from '../reducers/reducers';
 
 const TodoList = ({ todosAsIds }) => {
   return (

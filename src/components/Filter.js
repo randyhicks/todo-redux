@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { doSetFilter } from './index';
+import { doSetFilter } from '../actions';
 
 const Filter = ({ onSetFilter }) => {
   return (

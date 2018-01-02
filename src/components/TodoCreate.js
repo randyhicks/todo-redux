@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doAddTodoWithNotification } from './index';
+import { doAddTodoWithNotification } from '../actions';
 import uuid from 'uuid/v4';
 
 class TodoCreate extends Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getNotifications } from './index';
+import { getNotifications } from '../reducers/reducers';
 
 const Notifications = ({ notifications }) => {
   return <div>{notifications.map(note => <div key={note}>{note}</div>)}</div>;
