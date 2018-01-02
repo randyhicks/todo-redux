@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { doAddTodo } from './index';
+import { doAddTodoWithNotification } from './index';
 import uuid from 'uuid/v4';
 
 class TodoCreate extends Component {
@@ -37,7 +37,7 @@ class TodoCreate extends Component {
 }
 
 const mapDispatchToProps = {
-  onAddTodo: name => doAddTodo(uuid(), name)
+  onAddTodo: name => doAddTodoWithNotification(uuid(), name)
 };
 
 const TodoCreateContainer = connect(null, mapDispatchToProps)(TodoCreate);
